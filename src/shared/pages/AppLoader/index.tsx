@@ -1,8 +1,6 @@
 const AppLoader = () => {
 	return (
-		<div>
-			<h1>Cargando...</h1>
-		</div>
+		<video src='/videos/loader-vd.mov' autoPlay loop className='w-full h-[100vh] object-cover object-left '></video>
 	);
 };
 

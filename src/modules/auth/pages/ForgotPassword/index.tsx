@@ -21,7 +21,7 @@ const ForgotPassword = () => {
 				/>
 
 				<button
-					className='py-3 w-full max-w-[360px] rounded-md border bg-blue-500 hover:bg-blue-400 text-white'
+					className='py-3 w-full max-w-[360px] rounded-md border bg-[#152c66] hover:bg-[#152c66e4] text-white'
 					type='submit'
 				>
 					Recuperar cuenta

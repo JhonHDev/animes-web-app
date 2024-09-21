@@ -9,6 +9,7 @@ import ForgotPassword from '../modules/auth/pages/ForgotPassword';
 
 import PageNotFound from '../shared/pages/PageNotFound';
 
+import ManageProfile from '../modules/profile/pages/ManageProfile';
 import Home from '../modules/animes/pages/Home';
 
 const router = createBrowserRouter([
@@ -39,12 +40,15 @@ const router = createBrowserRouter([
 		element: <PrivateRoute />,
 		children: [
 			{
-				index: true,
+				path: 'manage-profile',
+				element: <ManageProfile />,
+			},
+			{
+				path: 'home',
 				element: <Home />,
 			},
 		],
 	},
-
 	{
 		path: '*',
 		element: <PageNotFound />,

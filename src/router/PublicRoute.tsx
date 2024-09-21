@@ -8,7 +8,7 @@ import AuthOutlet from '../modules/auth/components/AuthOutlet';
 const PublicRoute = () => {
 	const { user } = useSelector((state: RootState) => state.auth);
 
-	return user ? <Navigate to='/' /> : <AuthOutlet />;
+	return user ? <Navigate to='/manage-profile' /> : <AuthOutlet />;
 };
 
 export default PublicRoute;

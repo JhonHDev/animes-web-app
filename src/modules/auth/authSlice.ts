@@ -22,7 +22,7 @@ const authSlice = createSlice({
 			state.user = action.payload;
 		},
 		removeUser: (state) => {
-			state.user = null;
+			state.user = initialState.user;
 		},
 	},
 });

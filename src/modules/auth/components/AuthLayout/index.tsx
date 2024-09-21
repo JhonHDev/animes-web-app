@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import useModal from '../../../../shared/hooks/useModal';
-import CharacterModal from '../CharacterModal';
+
 import characters from './characters';
+
+import useClickCount from '../../hooks/useClickCount';
+import useModal from '../../../../shared/hooks/useModal';
+
+import CharacterModal from '../CharacterModal';
+
 import { AuthCharacter } from '../../models/AuthCharacter';
+import { showInfoAlert } from '../../../../shared/helpers/alerts';
 
 interface Props {
 	children: React.ReactNode;
@@ -13,7 +19,15 @@ const AuthLayout = ({ children }: Props) => {
 
 	const [selectedCharacter, setSelectedCharacter] = useState<AuthCharacter>();
 
+	const { clickCount, maxClickInAuth, handleSetClickCount } = useClickCount();
+
 	const handleOpenModal = (character: AuthCharacter) => {
+		if (clickCount >= maxClickInAuth) {
+			showInfoAlert('Debes Iniciar sesión para disfrutar de esta característica.');
+			return;
+		}
+
+		handleSetClickCount();
 		characterModal.openModal();
 		setSelectedCharacter(character);
 	};
@@ -27,16 +41,21 @@ const AuthLayout = ({ children }: Props) => {
 		<>
 			<section className='grid lg:grid-cols-2 '>
 				<div className='hidden w-full h-[100vh] lg:block overflow-hidden'>
-					<div className='relative flex flex-wrap justify-between items-center gap-y-2 bg-black opacity-90 h-[100vh]'>
+					<div className='relative flex flex-wrap justify-evenly items-center gap-y-2  opacity-90 h-[100vh] overflow-hidden'>
+						<div className='absolute w-full h-full bg-red-400'>
+							<img src='/images/auth-bg/color-bg.jpg' alt='' className='w-full h-[100vh]' />
+						</div>
+
 						{characters.map((character) => (
 							<div
 								onClick={() => handleOpenModal(character)}
-								className='w-[220px] h-[200px] hover:opacity-80'
+								className='w-[220px] h-[200px] '
 								key={character.id}
 							>
 								<img
 									src={character.image}
-									className='w-full h-full object-cover hover:scale-90 cursor-pointer transition-all'
+									className='w-full h-full object-cover object-top hover:scale-90 cursor-pointer transition-all down-img-shadow  xl:hover:opacity-80 z-20'
+									title='Abrir modal del personaje'
 								/>
 							</div>
 						))}
