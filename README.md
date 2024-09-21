@@ -2,6 +2,8 @@
 
 Aplicación Web para ver información sobre tus animes favoritos, personajes de cada anime y ver trailers de nuevas temporadas.
 
+![](https://res.cloudinary.com/dxnkaz9ad/image/upload/v1726888427/Captura_de_pantalla_2024-09-19_a_la_s_2.48.59_p._m._z490bu.png)
+
 ## Stack: 📕
 
 -   **React**
